@@ -17,4 +17,4 @@ tweets = api.search('intelligence')
 for tweet in tweets:
 	print(tweet)
 	wiki = TextBlob(tweet.text)
-	print(tweet.seniment)
+	print(wiki.sentiment.polarity)
