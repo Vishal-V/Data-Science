@@ -15,6 +15,6 @@ api = tweepy.API(auth)
 tweets = api.search('intelligence')
 
 for tweet in tweets:
-	print(tweet)
+	print(tweet.text)
 	wiki = TextBlob(tweet.text)
 	print(wiki.sentiment.polarity)
