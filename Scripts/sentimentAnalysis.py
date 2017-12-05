@@ -1,5 +1,6 @@
 from textblob import TextBlob
 import tweepy
+import csv
 
 consumer_api = '' #Your consumer api
 consumer_api_secret = '' #Your consumer api secret
@@ -14,7 +15,9 @@ api = tweepy.API(auth)
 
 tweets = api.search('intelligence')
 
-for tweet in tweets:
-	print(tweet.text)
-	wiki = TextBlob(tweet.text)
-	print(wiki.sentiment.polarity)
+with open('tweet_this.csv', 'w') as tweet_file:
+	twitter = csv.writer(tweet_file)
+	for tweet in tweets:
+		twitter.writerow(tweet.text.encode('utf-8'))
+		wiki = TextBlob(tweet.text)
+		print(wiki.sentiment.polarity)
